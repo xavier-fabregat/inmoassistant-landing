@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - InmoAssistant</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .login-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 102, 204, 0.3);
+            overflow: hidden;
+            max-width: 900px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .login-form-section {
+            padding: 50px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .login-image-section {
+            background: linear-gradient(135deg, #0066cc, #0052a3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            padding: 50px 40px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #0066cc;
+        }
+
+        .logo i {
+            font-size: 2.2rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            outline: none;
+            border-color: #0066cc;
+            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+        }
+
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            font-size: 0.9rem;
+        }
+
+        .remember-forgot label {
+            display: flex;
+            align-items: center;
+            margin: 0;
+            font-weight: 500;
+            color: #666;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 8px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .forgot-link {
+            color: #0066cc;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .forgot-link:hover {
+            color: #0052a3;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #0066cc, #0052a3);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 102, 204, 0.3);
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 102, 204, 0.4);
+        }
+
+        .login-btn:active {
+            transform: translateY(0);
+        }
+
+        .signup-link {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .signup-link a {
+            color: #0066cc;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
+
+        .demo-info {
+            background: #f8f9ff;
+            border-left: 4px solid #0066cc;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 25px;
+            font-size: 0.85rem;
+        }
+
+        .demo-info p {
+            color: #666;
+            margin: 5px 0;
+        }
+
+        .demo-info strong {
+            color: #0066cc;
+        }
+
+        .error-message {
+            background: #fee;
+            color: #c33;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            display: none;
+            border-left: 4px solid #c33;
+        }
+
+        .success-message {
+            background: #efe;
+            color: #3c3;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            display: none;
+            border-left: 4px solid #3c3;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            color: #0066cc;
+        }
+
+        .spinner {
+            border: 3px solid #e0e0e0;
+            border-top: 3px solid #0066cc;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #0066cc;
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            gap: 12px;
+            color: #0052a3;
+        }
+
+        /* Imagen section */
+        .image-icon {
+            font-size: 5rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .image-text {
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .image-description {
+            font-size: 0.95rem;
+            opacity: 0.85;
+            line-height: 1.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .login-container {
+                grid-template-columns: 1fr;
+            }
+
+            .login-image-section {
+                display: none;
+            }
+
+            .login-form-section {
+                padding: 40px 30px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .login-container {
+                border-radius: 10px;
+            }
+        }
+
+        /* Input spinner remover */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-form-section">
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> Volver a inicio
+            </a>
+
+            <div class="logo">
+                <i class="fas fa-home"></i>
+                <span>InmoAssistant</span>
+            </div>
+
+            <h1>Bienvenido</h1>
+            <p class="subtitle">Inicia sesión para acceder a tu cuenta</p>
+
+            <div class="demo-info">
+                <p><strong>Demo Credenciales:</strong></p>
+                <p>Email: demo@inmoassistant.com</p>
+                <p>Password: demo123</p>
+            </div>
+
+            <div id="errorMessage" class="error-message"></div>
+            <div id="successMessage" class="success-message"></div>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        placeholder="tu@email.com" 
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        placeholder="Ingresa tu contraseña" 
+                        required
+                    >
+                </div>
+
+                <div class="remember-forgot">
+                    <label>
+                        <input type="checkbox" id="remember">
+                        Recuérdame
+                    </label>
+                    <a href="#" class="forgot-link">¿Olvidaste tu contraseña?</a>
+                </div>
+
+                <button type="submit" class="login-btn">
+                    <span id="buttonText">Iniciar Sesión</span>
+                    <span id="loadingSpinner" class="loading">
+                        <span class="spinner"></span>Autenticando...
+                    </span>
+                </button>
+            </form>
+
+            <div class="signup-link">
+                ¿No tienes cuenta? <a href="#" onclick="alert('Funcionalidad de registro próximamente'); return false;">Regístrate aquí</a>
+            </div>
+        </div>
+
+        <div class="login-image-section">
+            <div class="image-icon">
+                <i class="fas fa-lock"></i>
+            </div>
+            <div class="image-text">Acceso Seguro</div>
+            <div class="image-description">
+                Tu información está protegida con encriptación de nivel empresarial. Accede con confianza a tu plataforma de gestión inmobiliaria.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const loginForm = document.getElementById('loginForm');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const rememberCheckbox = document.getElementById('remember');
+        const errorMessage = document.getElementById('errorMessage');
+        const successMessage = document.getElementById('successMessage');
+        const buttonText = document.getElementById('buttonText');
+        const loadingSpinner = document.getElementById('loadingSpinner');
+
+        // Credenciales de demo (en producción serían validadas por un servidor)
+        const DEMO_CREDENTIALS = {
+            email: 'demo@inmoassistant.com',
+            password: 'demo123'
+        };
+
+        // Cargar credenciales guardadas si existen
+        window.addEventListener('load', () => {
+            const savedEmail = localStorage.getItem('inmoassistant_saved_email');
+            if (savedEmail) {
+                emailInput.value = savedEmail;
+                rememberCheckbox.checked = true;
+            }
+
+            // Redirigir si ya está autenticado
+            if (localStorage.getItem('inmoassistant_user')) {
+                window.location.href = 'dashboard.html';
+            }
+        });
+
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const email = emailInput.value.trim();
+            const password = passwordInput.value;
+
+            // Limpiar mensajes
+            errorMessage.style.display = 'none';
+            successMessage.style.display = 'none';
+
+            // Validación básica
+            if (!email || !password) {
+                showError('Por favor completa todos los campos');
+                return;
+            }
+
+            // Mostrar loading
+            buttonText.style.display = 'none';
+            loadingSpinner.style.display = 'inline';
+            loginForm.querySelector('.login-btn').disabled = true;
+
+            // Simular delay de servidor
+            await new Promise(resolve => setTimeout(resolve, 1500));
+
+            // Validar credenciales
+            if (email === DEMO_CREDENTIALS.email && password === DEMO_CREDENTIALS.password) {
+                // Login exitoso
+                const user = {
+                    id: 1,
+                    email: email,
+                    name: 'Usuario Demo',
+                    loginTime: new Date().toISOString()
+                };
+
+                // Guardar en localStorage
+                localStorage.setItem('inmoassistant_user', JSON.stringify(user));
+                
+                if (rememberCheckbox.checked) {
+                    localStorage.setItem('inmoassistant_saved_email', email);
+                } else {
+                    localStorage.removeItem('inmoassistant_saved_email');
+                }
+
+                showSuccess('¡Autenticación exitosa! Redirigiendo...');
+                
+                // Redirigir al dashboard
+                setTimeout(() => {
+                    window.location.href = 'dashboard.html';
+                }, 1500);
+            } else {
+                showError('Email o contraseña incorrectos. Intenta con: demo@inmoassistant.com / demo123');
+                passwordInput.value = '';
+                
+                // Ocultar loading
+                buttonText.style.display = 'inline';
+                loadingSpinner.style.display = 'none';
+                loginForm.querySelector('.login-btn').disabled = false;
+            }
+        });
+
+        function showError(message) {
+            errorMessage.textContent = message;
+            errorMessage.style.display = 'block';
+            
+            buttonText.style.display = 'inline';
+            loadingSpinner.style.display = 'none';
+            loginForm.querySelector('.login-btn').disabled = false;
+        }
+
+        function showSuccess(message) {
+            successMessage.textContent = message;
+            successMessage.style.display = 'block';
+        }
+
+        // Permitir tecla Enter para enviar formulario
+        passwordInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                loginForm.dispatchEvent(new Event('submit'));
+            }
+        });
+    </script>
+</body>
+</html>

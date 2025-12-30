@@ -1,0 +1,32 @@
+{
+  "name": "inmoassistant-landing",
+  "version": "1.0.0",
+  "description": "Landing page moderna y profesional para InmoAssistant - Soluciones Inmobiliarias Inteligentes",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "dev": "python -m http.server 8000",
+    "preview": "python -m http.server 8000"
+  },
+  "keywords": [
+    "inmobiliario",
+    "landing",
+    "real-estate",
+    "saas",
+    "html",
+    "css",
+    "javascript"
+  ],
+  "author": "InmoAssistant Team",
+  "license": "© 2025 InmoAssistant. All rights reserved.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xavier-fabregat/inmoassistant-landing"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.0"
+  }
+}

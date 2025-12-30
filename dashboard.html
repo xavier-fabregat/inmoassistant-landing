@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - InmoAssistant</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+        }
+
+        /* Header */
+        .dashboard-header {
+            background: linear-gradient(135deg, #0066cc, #0052a3);
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 5px 15px rgba(0, 102, 204, 0.2);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .header-logo i {
+            font-size: 1.8rem;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .logout-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logout-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: white;
+        }
+
+        /* Main Content */
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .welcome-section {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 102, 204, 0.08);
+            margin-bottom: 40px;
+        }
+
+        .welcome-title {
+            font-size: 2rem;
+            color: #0066cc;
+            margin-bottom: 10px;
+        }
+
+        .welcome-subtitle {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .action-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .action-btn {
+            background: linear-gradient(135deg, #0066cc, #0052a3);
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 102, 204, 0.3);
+        }
+
+        .action-btn.secondary {
+            background: #f0f4ff;
+            color: #0066cc;
+            border: 2px solid #0066cc;
+        }
+
+        .action-btn.secondary:hover {
+            background: #e6f2ff;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 102, 204, 0.08);
+            transition: all 0.3s ease;
+            border-top: 4px solid #0066cc;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 102, 204, 0.15);
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            color: #0066cc;
+            margin-bottom: 15px;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0066cc;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Features Grid */
+        .features-section {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 102, 204, 0.08);
+            margin-bottom: 40px;
+        }
+
+        .features-title {
+            font-size: 1.5rem;
+            color: #0066cc;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9ff;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            background: #e6f2ff;
+            transform: translateY(-5px);
+        }
+
+        .feature-item i {
+            font-size: 2rem;
+            color: #0066cc;
+            margin-bottom: 10px;
+        }
+
+        .feature-item h3 {
+            color: #0066cc;
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+        }
+
+        .feature-item p {
+            color: #666;
+            font-size: 0.85rem;
+        }
+
+        /* Activity Section */
+        .activity-section {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 102, 204, 0.08);
+        }
+
+        .activity-title {
+            font-size: 1.5rem;
+            color: #0066cc;
+            margin-bottom: 30px;
+        }
+
+        .activity-list {
+            display: grid;
+            gap: 15px;
+        }
+
+        .activity-item {
+            display: flex;
+            gap: 15px;
+            padding: 15px;
+            background: #f8f9ff;
+            border-radius: 10px;
+            border-left: 4px solid #0066cc;
+        }
+
+        .activity-icon {
+            width: 40px;
+            height: 40px;
+            background: #e6f2ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0066cc;
+            flex-shrink: 0;
+        }
+
+        .activity-content h4 {
+            color: #0066cc;
+            margin-bottom: 5px;
+        }
+
+        .activity-content p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 3px;
+        }
+
+        .activity-time {
+            color: #999;
+            font-size: 0.85rem;
+        }
+
+        /* Back Link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #0066cc;
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            gap: 12px;
+            color: #0052a3;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .header-actions {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .dashboard-container {
+                padding: 20px 15px;
+            }
+
+            .welcome-section,
+            .features-section,
+            .activity-section {
+                padding: 20px;
+            }
+
+            .welcome-title {
+                font-size: 1.5rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+        }
+
+        /* Loading */
+        .loading-skeleton {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+            height: 20px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="dashboard-header">
+        <div class="header-container">
+            <div class="header-logo">
+                <i class="fas fa-home"></i>
+                <span>InmoAssistant</span>
+            </div>
+            <div class="header-actions">
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div>
+                        <div id="userName">Usuario Demo</div>
+                        <small id="userEmail" style="opacity: 0.8; font-size: 0.85rem;"></small>
+                    </div>
+                </div>
+                <button class="logout-btn" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="dashboard-container">
+        <a href="index.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Volver a inicio
+        </a>
+
+        <!-- Welcome Section -->
+        <div class="welcome-section">
+            <h1 class="welcome-title">¡Bienvenido de vuelta!</h1>
+            <p class="welcome-subtitle">Accede a todas las herramientas de gestión inmobiliaria desde tu panel de control</p>
+            
+            <div class="action-buttons">
+                <button class="action-btn" onclick="alert('Agregar propiedad - Próximamente')">
+                    <i class="fas fa-plus"></i> Agregar Propiedad
+                </button>
+                <button class="action-btn secondary" onclick="alert('Ver propiedades - Próximamente')">
+                    <i class="fas fa-home"></i> Ver Propiedades
+                </button>
+                <button class="action-btn secondary" onclick="alert('Reportes - Próximamente')">
+                    <i class="fas fa-chart-bar"></i> Ver Reportes
+                </button>
+                <button class="action-btn secondary" onclick="alert('Clientes - Próximamente')">
+                    <i class="fas fa-users"></i> Mis Clientes
+                </button>
+            </div>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-home"></i>
+                </div>
+                <div class="stat-value">24</div>
+                <div class="stat-label">Propiedades Activas</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="stat-value">18</div>
+                <div class="stat-label">Clientes Registrados</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-dollar-sign"></i>
+                </div>
+                <div class="stat-value">$1.2M</div>
+                <div class="stat-label">Valor Total de Cartera</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="stat-value">+8%</div>
+                <div class="stat-label">Crecimiento este mes</div>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="features-section">
+            <h2 class="features-title">
+                <i class="fas fa-star"></i> Funcionalidades Disponibles
+            </h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <i class="fas fa-list"></i>
+                    <h3>Gestión de Propiedades</h3>
+                    <p>Administra tu cartera completa</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-chart-bar"></i>
+                    <h3>Análisis de Datos</h3>
+                    <p>Reportes detallados en tiempo real</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-users"></i>
+                    <h3>Gestión de Clientes</h3>
+                    <p>Mantén contacto con tus clientes</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-calendar"></i>
+                    <h3>Agenda de Citas</h3>
+                    <p>Organiza tus reuniones fácilmente</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-file-alt"></i>
+                    <h3>Documentos</h3>
+                    <p>Almacena documentos importantes</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-bell"></i>
+                    <h3>Notificaciones</h3>
+                    <p>Alertas de actualizaciones</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Activity Section -->
+        <div class="activity-section">
+            <h2 class="activity-title">
+                <i class="fas fa-history"></i> Actividad Reciente
+            </h2>
+            <div class="activity-list">
+                <div class="activity-item">
+                    <div class="activity-icon">
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="activity-content">
+                        <h4>Propiedad agregada</h4>
+                        <p>Se agregó "Apartamento en el Centro"</p>
+                        <span class="activity-time">Hace 2 horas</span>
+                    </div>
+                </div>
+
+                <div class="activity-item">
+                    <div class="activity-icon">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <div class="activity-content">
+                        <h4>Nuevo cliente</h4>
+                        <p>Juan Pérez se registró como cliente</p>
+                        <span class="activity-time">Hace 5 horas</span>
+                    </div>
+                </div>
+
+                <div class="activity-item">
+                    <div class="activity-icon">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <div class="activity-content">
+                        <h4>Transacción completada</h4>
+                        <p>Venta finalizada por $350,000</p>
+                        <span class="activity-time">Hace 1 día</span>
+                    </div>
+                </div>
+
+                <div class="activity-item">
+                    <div class="activity-icon">
+                        <i class="fas fa-comment"></i>
+                    </div>
+                    <div class="activity-content">
+                        <h4>Nuevo mensaje</h4>
+                        <p>Cliente interesado en propiedad "Casa en Playa"</p>
+                        <span class="activity-time">Hace 1 día</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Verificar si el usuario está autenticado
+        window.addEventListener('load', () => {
+            const user = localStorage.getItem('inmoassistant_user');
+            if (!user) {
+                // No está autenticado, redirigir a login
+                window.location.href = 'login.html';
+                return;
+            }
+
+            // Cargar datos del usuario
+            try {
+                const userData = JSON.parse(user);
+                document.getElementById('userName').textContent = userData.name;
+                document.getElementById('userEmail').textContent = userData.email;
+            } catch (e) {
+                console.error('Error al cargar datos del usuario');
+            }
+        });
+
+        // Función para cerrar sesión
+        function logout() {
+            if (confirm('¿Estás seguro de que deseas cerrar sesión?')) {
+                localStorage.removeItem('inmoassistant_user');
+                localStorage.removeItem('inmoassistant_saved_email');
+                window.location.href = 'login.html';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InmoAssistant - Gana MÁS, Trabaja MENOS | Única Plataforma que Te Protege</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-content">
+                <div class="logo">
+                    <i class="fas fa-home"></i>
+                    <span>InmoAssistant</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#features">Características</a></li>
+                    <li><a href="#benefits">Beneficios</a></li>
+                    <li><a href="#pricing">Precios</a></li>
+                    <li><a href="#contact">Contacto</a></li>
+                </ul>
+                <div class="nav-auth">
+                    <button id="navLoginBtn" class="btn-nav-login" onclick="navigateToLogin()">
+                        <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+                    </button>
+                    <button id="navDashboardBtn" class="btn-nav-dashboard" onclick="navigateToDashboard()" style="display: none;">
+                        <i class="fas fa-user-circle"></i> Mi Dashboard
+                    </button>
+                </div>
+                <button class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">⚡ Tus Competidores YA LO USAN ⚡</h1>
+                <p class="hero-subtitle">Mientras tú lees esto, otros agentes están GANANDO MÁS dinero con InmoAssistant. ¿Será el próximo o te quedarás atrás?</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary btn-urgent">⏰ ACCESO INMEDIATO (Limitado) ⏰</button>
+                    <button class="btn btn-secondary">Ver Prueba en Vivo</button>
+                </div>
+                <p class="urgency-text">⚠️ Solo 47 espacios disponibles este mes | ⏳ Oferta caduca en 72 horas</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <h3>🏆 5,000+</h3>
+                        <p>GANADORES Usando InmoAssistant</p>
+                    </div>
+                    <div class="stat">
+                        <h3>💰 $2.5B</h3>
+                        <p>Controlados con NUESTRA IA</p>
+                    </div>
+                    <div class="stat">
+                        <h3>🔐 98%</h3>
+                        <p>Nunca Se Arrepienten</p>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="floating-card">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">🛡️ Lo Que TE PROTEGE de Fracasar 🛡️</h2>
+            <div class="features-grid">
+                <div class="feature-card fear-feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>⚡ IA que PIENSA por Ti</h3>
+                    <p>Detecta oportunidades que TUS OJOS NUNCA VEN • Gana dinero mientras duermes</p>
+                </div>
+                <div class="feature-card fear-feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>⚡ VELOCIDAD EXTREMA</h3>
+                    <p>Responde clientes 10X más rápido que competencia • Cierra más ventas POR PURO INSTINTO</p>
+                </div>
+                <div class="feature-card fear-feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>🔒 INMUNE a ERRORES</h3>
+                    <p>Olvídate de perder dinero por descuidos • Tus datos están más seguros que en un banco</p>
+                </div>
+                <div class="feature-card fear-feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>📱 Poder en tu BOLSILLO</h3>
+                    <p>Controla TODO desde móvil • Nunca pierdas una oportunidad por estar fuera</p>
+                </div>
+                <div class="feature-card fear-feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3>👑 SÉ EL JEFE</h3>
+                    <p>Tu equipo verá resultados en DÍAS, no meses • Lidera el mercado o queda destruido</p>
+                </div>
+                <div class="feature-card fear-feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>🚀 CRECE ILIMITADO</h3>
+                    <p>Escala sin límites • Un agente con InmoAssistant = 5 sin ella</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits" id="benefits">
+        <div class="container">
+            <h2 class="section-title">💸 RESULTADOS REALES = MÁS DINERO EN TU BOLSILLO 💸</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item survival-benefit">
+                    <div class="benefit-image profit">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h3>💰 +$8,000/mes de EXTRA DINERO</h3>
+                        <p>Mientras TRABAJAS MENOS horas • Otros agentes ganaban lo mismo en 3 meses</p>
+                    </div>
+                </div>
+                <div class="benefit-item survival-benefit">
+                    <div class="benefit-image profit">
+                        <i class="fas fa-piggy-bank"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h3>💵 AHORRA 35% en Gastos</h3>
+                        <p>La plataforma se PAGA SOLA en 2 semanas • El dinero regresa a tu bolsillo</p>
+                    </div>
+                </div>
+                <div class="benefit-item survival-benefit">
+                    <div class="benefit-image profit">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h3>❤️ Clientes OBSESIONADOS contigo</h3>
+                        <p>Respuestas INSTANTÁNEAS = Clientes LEALES • Ellos vuelven, otros agentes lloran</p>
+                    </div>
+                </div>
+                <div class="benefit-item survival-benefit">
+                    <div class="benefit-image profit">
+                        <i class="fas fa-hourglass-end"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h3>🏖️ LIBERTAD: 10+ horas/semana</h3>
+                        <p>Haz lo que AMES mientras InmoAssistant trabaja • Vacaciones SIN PERDER dinero</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title">⏰ ELIGE TU DESTINO: ⏰</h2>
+            <p class="pricing-header-text">❌ SIN InmoAssistant = Trabajar 60h/semana por menos dinero<br>✅ CON InmoAssistant = Trabajar 30h/semana + DINERO EXTRA</p>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="badge-danger">Principiantes Apenas Empiezan</div>
+                    <h3>BUILDER</h3>
+                    <div class="price">$19<span>/mes</span></div>
+                    <p class="plan-description">Para quien quiere DEJAR de sufrir (limitado)</p>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check fire"></i> Autom. de 5 propiedades</li>
+                        <li><i class="fas fa-check fire"></i> Alertas de OPORTUNIDADES</li>
+                        <li><i class="fas fa-check fire"></i> Respuestas automáticas IA</li>
+                        <li><i class="fas fa-times"></i> Análisis predictivo</li>
+                        <li><i class="fas fa-times"></i> Reportes premium</li>
+                    </ul>
+                    <button class="btn btn-secondary">Prueba GRATIS 14 Días</button>
+                    <p class="cta-subtext">No pide tarjeta • Cancela cuando quieras</p>
+                </div>
+                <div class="pricing-card featured danger-featured">
+                    <div class="badge-fire">🔥 GANADORES USAN ESTO 🔥</div>
+                    <h3>POWERHOUSE</h3>
+                    <div class="price">$99<span>/mes</span></div>
+                    <p class="plan-description">Plan de GANADORES (+$8k/mes extra)</p>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check fire"></i> Propiedades ILIMITADAS</li>
+                        <li><i class="fas fa-check fire"></i> IA predice dinero GARANTIZADO</li>
+                        <li><i class="fas fa-check fire"></i> Soporte 24/7 HUMANO</li>
+                        <li><i class="fas fa-check fire"></i> Análisis competencia EXCLUSIVO</li>
+                        <li><i class="fas fa-check fire"></i> Reportes = Domina el mercado</li>
+                    </ul>
+                    <button class="btn btn-primary btn-fire">🚀 ACCESO INMEDIATO 🚀</button>
+                    <p class="cta-subtext fire">📋 Solo 47 espacios | ⏳ 72 horas</p>
+                </div>
+                <div class="pricing-card">
+                    <div class="badge-gold">👑 ELITE (Agencias)</div>
+                    <h3>EMPIRE</h3>
+                    <div class="price">Desde $399<span>/mes</span></div>
+                    <p class="plan-description">Domina TODO tu mercado</p>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check fire"></i> 10+ equipos integrados</li>
+                        <li><i class="fas fa-check fire"></i> IA aprende DE TI</li>
+                        <li><i class="fas fa-check fire"></i> Soporte Premium Concierge</li>
+                        <li><i class="fas fa-check fire"></i> Domina el mercado GARANTIZADO</li>
+                        <li><i class="fas fa-check fire"></i> ROI comprobado mensual</li>
+                    </ul>
+                    <button class="btn btn-secondary">Habla con VIP</button>
+                    <p class="cta-subtext">Consulta GRATIS sin obligación</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">😱 MIRA QUIÉNES GANARON ANTES QUE TÚ 😱</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"¡INCREÍBLE! En 30 días gané +$12k. Mis competidores aún no saben qué pasó. InmoAssistant es CHEAT CODE."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar success">JR</div>
+                        <div>
+                            <h4>Juan Rodríguez</h4>
+                            <p>📍 Madrid • +$12,000 primer mes</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"ROI en 2 SEMANAS. Mi agencia crece 300%. Los que NO usan InmoAssistant van a quebrar."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar success">MG</div>
+                        <div>
+                            <h4>María García</h4>
+                            <p>📍 Barcelona • 300% crecimiento</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Tengo soporte REAL 24/7. Problemas resueltos en MINUTOS. Así no trabajan otros."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar success">CP</div>
+                        <div>
+                            <h4>Carlos Pérez</h4>
+                            <p>📍 Valencia • Broker Top #1</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta danger-cta">
+        <div class="container">
+            <h2>⚠️ ÚLTIMA OPORTUNIDAD ⚠️</h2>
+            <p>En 72 horas esta oferta desaparece. Otros agentes GANARÁN tu dinero mientras TÚ esperas.</p>
+            <div class="cta-buttons">
+                <button class="btn btn-primary btn-large btn-pulse">🚀 QUIERO GANAR MÁS 🚀</button>
+                <button class="btn btn-secondary btn-large">¿Primero una PRUEBA? (Gratis)</button>
+            </div>
+            <p class="final-urgency">⏱️ Quedan solo 47 espacios | 📊 5000+ agentes ya adentro | 💰 ¿Serás #5001?</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>InmoAssistant</h4>
+                    <p>Revolucionando el sector inmobiliario con tecnología inteligente.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Producto</h4>
+                    <ul>
+                        <li><a href="#">Características</a></li>
+                        <li><a href="#">Precios</a></li>
+                        <li><a href="#">Seguridad</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Empresa</h4>
+                    <ul>
+                        <li><a href="#">Acerca de Nosotros</a></li>
+                        <li><a href="#">Contacto</a></li>
+                        <li><a href="#">Empleo</a></li>
+                        <li><a href="#">Prensa</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacidad</a></li>
+                        <li><a href="#">Términos</a></li>
+                        <li><a href="#">Cookies</a></li>
+                        <li><a href="#">Conformidad</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 InmoAssistant. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
