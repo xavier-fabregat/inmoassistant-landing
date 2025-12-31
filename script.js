@@ -2,33 +2,9 @@
    FUNCIONALIDAD JAVASCRIPT
    =================================== */
 
-// ===== FUNCIONES DE AUTENTICACIÓN =====
-function navigateToLogin() {
-    window.location.href = 'login.html';
-}
-
-function navigateToDashboard() {
-    window.location.href = 'dashboard.html';
-}
-
-function checkAuthStatus() {
-    const user = localStorage.getItem('inmoassistant_user');
-    const loginBtn = document.getElementById('navLoginBtn');
-    const dashboardBtn = document.getElementById('navDashboardBtn');
-    
-    if (user) {
-        // Usuario autenticado
-        if (loginBtn) loginBtn.style.display = 'none';
-        if (dashboardBtn) dashboardBtn.style.display = 'flex';
-    } else {
-        // Usuario no autenticado
-        if (loginBtn) loginBtn.style.display = 'flex';
-        if (dashboardBtn) dashboardBtn.style.display = 'none';
-    }
-}
-
-// Verificar autenticación al cargar la página
-window.addEventListener('load', checkAuthStatus);
+// ===== AUTENTICACIÓN DELEGADA A APP =====
+// La autenticación es gestionada por https://app.inmoassistant.es
+// La landing redirige al login sin gestionar estado local
 
 // Smooth scroll para los links de navegación
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
