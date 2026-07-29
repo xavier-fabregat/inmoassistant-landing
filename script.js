@@ -50,58 +50,6 @@ if (toggleBtn) {
     });
 }
 
-// Animación de números en las estadísticas
-const observerOptions = {
-    threshold: 0.5,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const statsObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
-            animateStats();
-            entry.target.classList.add('animated');
-        }
-    });
-}, observerOptions);
-
-const statsSection = document.querySelector('.hero-stats');
-if (statsSection) {
-    statsObserver.observe(statsSection);
-}
-
-function animateStats() {
-    const stats = document.querySelectorAll('.stat h3');
-    stats.forEach(stat => {
-        const finalValue = parseInt(stat.textContent.replace(/\D/g, ''));
-        const duration = 2000;
-        const start = Date.now();
-        const prefix = stat.textContent.match(/^\D+/)?.[0] || '';
-        const suffix = stat.textContent.match(/\D+$/)?.[0] || '';
-
-        const animate = () => {
-            const progress = Math.min((Date.now() - start) / duration, 1);
-            const currentValue = Math.floor(finalValue * progress);
-            
-            if (stat.textContent.includes('+')) {
-                stat.textContent = '+' + currentValue.toLocaleString();
-            } else if (stat.textContent.includes('$')) {
-                stat.textContent = '$' + (currentValue / 1000).toFixed(1) + 'B';
-            } else if (stat.textContent.includes('%')) {
-                stat.textContent = currentValue + '%';
-            } else {
-                stat.textContent = currentValue.toLocaleString();
-            }
-
-            if (progress < 1) {
-                requestAnimationFrame(animate);
-            }
-        };
-
-        animate();
-    });
-}
-
 // Efecto de scroll en la navbar
 let lastScrollTop = 0;
 const navbar = document.querySelector('.navbar');
@@ -207,30 +155,6 @@ function initTooltips() {
 
 initTooltips();
 
-// Contador de usuarios online simulado (opcional)
-function updateStats() {
-    const onlineCount = document.querySelector('[data-online-count]');
-    if (onlineCount) {
-        const random = Math.floor(Math.random() * 50) + 150;
-        onlineCount.textContent = random;
-    }
-}
-
-// Actualizar stats cada 5 segundos
-setInterval(updateStats, 5000);
-
-// Función para cargar contenido dinámico
-async function loadDynamicContent(endpoint) {
-    try {
-        const response = await fetch(endpoint);
-        if (!response.ok) throw new Error('Error en la solicitud');
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        console.error('Error al cargar contenido:', error);
-    }
-}
-
 // Inicialización al cargar el documento
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Landing page de InmoAssistant cargada');
@@ -245,13 +169,6 @@ document.addEventListener('DOMContentLoaded', () => {
 window.addEventListener('error', (event) => {
     console.error('Error global:', event.error);
 });
-
-// Service Worker para PWA (opcional)
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js').catch(err => {
-        console.log('Service Worker registration failed:', err);
-    });
-}
 
 // Performance: Lazy loading de imágenes
 if ('IntersectionObserver' in window) {

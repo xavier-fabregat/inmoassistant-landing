@@ -18,15 +18,12 @@
     "javascript"
   ],
   "author": "InmoAssistant Team",
-  "license": "© 2025 InmoAssistant. All rights reserved.",
+  "license": "UNLICENSED",
   "repository": {
     "type": "git",
     "url": "https://github.com/xavier-fabregat/inmoassistant-landing"
   },
   "engines": {
     "node": ">=14.0.0"
-  },
-  "devDependencies": {
-    "http-server": "^14.1.0"
   }
 }
