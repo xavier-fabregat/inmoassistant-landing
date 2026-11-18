@@ -186,3 +186,19 @@ if ('IntersectionObserver' in window) {
     
     images.forEach(img => imageObserver.observe(img));
 }
+
+// ===== «SOLICITAR DEMO» =====
+// Único sitio que decide adónde lleva «Solicitar Demo» (botones con data-demo).
+// Cuando exista el número de WhatsApp exclusivo de InmoAssistant para la demo,
+// ponlo en DEMO_WHATSAPP con el prefijo del país, sin «+» ni espacios.
+// Mientras esté vacío, los botones siguen abriendo el correo de su href.
+const DEMO_WHATSAPP = '';
+const DEMO_WHATSAPP_TEXTO = 'Hola, quiero ver la demo de InmoAssistant.';
+
+if (/^\d{8,15}$/.test(DEMO_WHATSAPP)) {
+    document.querySelectorAll('a[data-demo]').forEach(a => {
+        a.href = `https://wa.me/${DEMO_WHATSAPP}?text=${encodeURIComponent(DEMO_WHATSAPP_TEXTO)}`;
+        a.target = '_blank';
+        a.rel = 'noopener';
+    });
+}

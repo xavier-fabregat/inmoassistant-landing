@@ -3,19 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InmoAssistant - Plataforma IA Inmobiliaria | Automatización 24/7</title>
-    <meta name="description" content="InmoAssistant automatiza la captación de propiedades 24/7, atiende a tus clientes los 365 días del año y clasifica cada contacto para que tu equipo intervenga solo cuando el cliente está listo.">
+    <title>InmoAssistant - Plataforma IA Inmobiliaria</title>
+    <meta name="description" content="InmoAssistant responde a tus clientes a cualquier hora, los 365 días del año, clasifica los contactos y pasa la conversación a tu equipo cuando hace falta.">
     <link rel="canonical" href="https://inmoassistant.es/">
     <meta property="og:type" content="website">
     <meta property="og:title" content="InmoAssistant - Plataforma IA Inmobiliaria">
-    <meta property="og:description" content="Automatiza la captación de propiedades 24/7, atiende a tus clientes los 365 días del año y clasifica automáticamente cada contacto.">
+    <meta property="og:description" content="Responde a tus clientes a cualquier hora, los 365 días del año, y clasifica los contactos.">
     <meta property="og:url" content="https://inmoassistant.es/">
     <meta property="og:locale" content="es_ES">
     <meta name="twitter:card" content="summary">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="preload" href="/assets/fonts/inter-400-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/bricolage-grotesque-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/portada.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
+<body class="portada">
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
@@ -25,8 +28,9 @@
                     <span>InmoAssistant</span>
                 </div>
                 <ul class="nav-links">
-                    <li><a href="#features">Características</a></li>
-                    <li><a href="#benefits">Beneficios</a></li>
+                    <li><a href="/whatsapp/">WhatsApp</a></li>
+                    <li><a href="#videovisitas">Videovisitas</a></li>
+                    <li><a href="/precios/">Precios</a></li>
                 </ul>
                 <div class="nav-auth">
                     <a href="https://app.inmoassistant.es/login" class="btn-nav-login">
@@ -42,142 +46,157 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title">Adapta tu inmobiliaria a la inteligencia artificial desde ahora mismo</h1>
-                <p class="hero-subtitle">InmoAssistant automatiza la captación de propiedades 24/7, atiende a tus clientes los 365 días del año y clasifica automáticamente cada contacto para que tu equipo solo intervenga cuando el cliente está listo para avanzar.</p>
-                <div class="hero-buttons">
-                    <a href="mailto:javier@inmogat.com?subject=Solicitud%20de%20demo%20-%20Inmoassistant" class="btn btn-primary btn-urgent">Solicitar Demo</a>
-                    <a href="https://app.inmoassistant.es/login" class="btn btn-secondary">Iniciar Sesión</a>
+    <!-- Portada: problema y demo -->
+    <header class="p-hero">
+        <div class="container p-hero-stage">
+            <div class="p-hero-copy">
+                <div>
+                    <p class="p-eyebrow">Para inmobiliarias</p>
+                    <h1 class="p-h1">Mientras enseñas un piso, otra consulta espera respuesta.</h1>
                 </div>
-                <p class="urgency-text">Deja que la IA trabaje por ti mientras tu equipo se enfoca en lo que importa</p>
-                <div class="hero-stats">
-                    <div class="stat">
-                        <h3>24/7</h3>
-                        <p>Captación automatizada sin parar</p>
-                    </div>
-                    <div class="stat">
-                        <h3>365 días</h3>
-                        <p>Atención inteligente continua</p>
+                <div>
+                    <p class="p-lead">InmoAssistant responde por WhatsApp a cualquier hora, cualifica la consulta y la deja en el embudo. Tu equipo entra cuando hay que llamar.</p>
+                    <div class="p-actions">
+                        <a href="mailto:info@inmoassistant.es?subject=Solicitud%20de%20demo%20InmoAssistant" class="btn btn-primary btn-large" data-demo>Solicitar Demo</a>
                     </div>
                 </div>
             </div>
-            <div class="hero-image">
-                <div class="floating-card">
-                    <i class="fas fa-chart-line"></i>
+
+            <section class="demo p-demo hx" id="demo" aria-label="Demostración del producto">
+                <div class="p-demo-head">
+                    <p class="demo-notice"><i class="fas fa-info-circle"></i> Demostración con datos ficticios</p>
+                    <button type="button" class="hx-pause" data-action="toggle" aria-pressed="false" aria-label="Pausar la demostración"><i class="fas fa-pause" aria-hidden="true"></i></button>
+                </div>
+                <p class="hx-sr">Dos casos seguidos en el mismo chat de WhatsApp y el mismo embudo. Un comprador pide un piso: el asistente pregunta la población, envía la lista de inmuebles de esa zona, manda la ficha del que elige y propone una visita; cuando el cliente indica su preferencia, la tarjeta pasa a «Oportunidad activa», con 85 puntos, caliente y la siguiente acción «Coordinar visita ref. EJ-102», y una asesora la confirma. Después, una vendedora recibe la videoguía del vendedor, responde población, nombre, habitaciones, metros y estado, recibe el resumen y el enlace al valorador, y su tarjeta llega a «Oportunidad activa», con 85 puntos, caliente, y pasa a un asesor.</p>
+                <div class="hx-frame">
+                    <ol class="hx-steps" aria-label="Pasos de la demostración"></ol>
+                    <div class="hx-canvas" aria-hidden="true"></div>
+                </div>
+            </section>
+        </div>
+    </header>
+
+    <!-- Resultado para la agencia -->
+    <section class="p-section" id="resultado">
+        <div class="container">
+            <p class="p-eyebrow">Qué cambia</p>
+            <h2 class="p-h2">Del móvil de un comercial al embudo de la agencia</h2>
+            <div class="p-compare">
+                <div class="p-compare-head"><span>Hoy</span><span>Con InmoAssistant</span></div>
+                <div class="p-compare-row">
+                    <p>La consulta entra cuando estás en una visita. Cuando la ves, ya ha preguntado a otra agencia.</p>
+                    <p>El asistente responde en WhatsApp y pregunta población, nombre y presupuesto.</p>
+                </div>
+                <div class="p-compare-row">
+                    <p>La conversación se queda en el teléfono de quien la atendió.</p>
+                    <p>La conversación queda en el embudo, junto a la tarjeta del contacto.</p>
+                </div>
+                <div class="p-compare-row">
+                    <p>Para saber a quién llamar primero hay que releer los chats.</p>
+                    <p>Las tarjetas muestran etapa, temperatura y puntuación.</p>
+                </div>
+                <div class="p-compare-row">
+                    <p>El equipo contesta consultas que aún no están cualificadas.</p>
+                    <p>Tu equipo entra cuando el asistente pasa la conversación a una persona.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="features" id="features">
+    <!-- Cada plan en acción (plan-demos.js) -->
+    <section class="p-hero p-band pd-section" id="planes-en-accion">
         <div class="container">
-            <h2 class="section-title">Características Principales</h2>
-            <div class="features-grid">
-                <div class="feature-card fear-feature">
-                    <div class="feature-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3>Captación automática de propiedades</h3>
-                    <p>Entrada continua de oportunidades las 24 horas del día, sin intervención manual</p>
-                </div>
-                <div class="feature-card fear-feature">
-                    <div class="feature-icon">
-                        <i class="fas fa-bolt"></i>
-                    </div>
-                    <h3>Atención inteligente 365 días</h3>
-                    <p>Respuestas inmediatas y consistentes a clientes y propietarios, todos los días del año</p>
-                </div>
-                <div class="feature-card fear-feature">
-                    <div class="feature-icon">
-                        <i class="fas fa-lock"></i>
-                    </div>
-                    <h3>Clasificación automatizada de clientes</h3>
-                    <p>La IA filtra, prioriza y prepara cada lead; el asesor entra solo cuando el cliente está cualificado</p>
-                </div>
-                <div class="feature-card fear-feature">
-                    <div class="feature-icon">
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <h3>CRM inmobiliario con IA</h3>
-                    <p>Leads, propiedades, pipeline, notas y seguimiento centralizado en una plataforma</p>
-                </div>
-                <div class="feature-card fear-feature">
-                    <div class="feature-icon">
-                        <i class="fas fa-crown"></i>
-                    </div>
-                    <h3>Estudios de mercado por zonas</h3>
-                    <p>Análisis de precios, demanda, resultados de marketing y métricas desglosadas geográficamente</p>
-                </div>
-                <div class="feature-card fear-feature">
-                    <div class="feature-icon">
-                        <i class="fas fa-rocket"></i>
-                    </div>
-                    <h3>Escalabilidad sin límites</h3>
-                    <p>Crece tu operativa sin aumentar recursos; automatización que acompaña tu crecimiento</p>
-                </div>
+            <p class="p-eyebrow">Planes</p>
+            <h2 class="p-h2">Mira cada plan en acción</h2>
+            <div class="pd-picker" role="group" aria-label="Elige un plan">
+                <button type="button" class="pd-pick" data-plan="atencion" aria-pressed="true"><b>Atención</b><span>99&nbsp;€/mes</span></button>
+                <button type="button" class="pd-pick" data-plan="video" aria-pressed="false"><b>Atención + Vídeo</b><span>149&nbsp;€/mes</span></button>
+                <button type="button" class="pd-pick" data-plan="completo" aria-pressed="false"><b>Completo</b><span>199&nbsp;€/mes</span></button>
             </div>
+            <p class="pd-vat">Precios por agencia y mes, IVA no incluido.</p>
+            <section class="demo p-demo pd" aria-label="Demostración del plan elegido">
+                <div class="p-demo-head">
+                    <p class="demo-notice"><i class="fas fa-info-circle"></i> Demostración con datos ficticios</p>
+                    <button type="button" class="hx-pause" data-action="toggle" aria-pressed="false" aria-label="Pausar la demostración"><i class="fas fa-pause" aria-hidden="true"></i></button>
+                </div>
+                <p class="hx-sr pd-sr" aria-live="polite"></p>
+                <div class="pd-canvas" aria-hidden="true"></div>
+                <p class="pd-tags"></p>
+            </section>
         </div>
     </section>
 
-    <!-- Benefits Section -->
-    <section class="benefits" id="benefits">
-        <div class="container">
-            <h2 class="section-title">Beneficios para tu operativa</h2>
-            <div class="benefits-grid">
-                <div class="benefit-item survival-benefit">
-                    <div class="benefit-image profit">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <div class="benefit-content">
-                        <h3>Mayor productividad del equipo</h3>
-                        <p>Menos tiempo en conversaciones no cualificadas, más enfoque en cerrar ventas</p>
-                    </div>
-                </div>
-                <div class="benefit-item survival-benefit">
-                    <div class="benefit-image profit">
-                        <i class="fas fa-piggy-bank"></i>
-                    </div>
-                    <div class="benefit-content">
-                        <h3>Reducción de costos operativos</h3>
-                        <p>Automatización que reduce la necesidad de recursos manuales y operativos</p>
-                    </div>
-                </div>
-                <div class="benefit-item survival-benefit">
-                    <div class="benefit-image profit">
-                        <i class="fas fa-heart"></i>
-                    </div>
-                    <div class="benefit-content">
-                        <h3>Mejora de experiencia del cliente</h3>
-                        <p>Respuestas rápidas y atención 24/7 generan confianza y lealtad</p>
-                    </div>
-                </div>
-                <div class="benefit-item survival-benefit">
-                    <div class="benefit-image profit">
-                        <i class="fas fa-hourglass-end"></i>
-                    </div>
-                    <div class="benefit-content">
-                        <h3>Liberación de tiempo operativo</h3>
-                        <p>Menos gestión manual permite enfocar recursos en estrategia y relaciones clave</p>
-                    </div>
-                </div>
+    <!-- Videovisitas -->
+    <section class="p-section p-section-alt" id="videovisitas">
+        <div class="container p-video">
+            <div>
+                <p class="p-eyebrow">Videovisitas</p>
+                <h2 class="p-h2">De las fotos de la ficha a una videovisita</h2>
+                <ol class="p-steps">
+                    <li><strong>Fotos en la ficha.</strong> Partes de las que ya tienes.</li>
+                    <li><strong>Guion por escenas.</strong> Una escena por estancia.</li>
+                    <li><strong>Revisión y edición.</strong> Cambias lo que quieras antes de generar.</li>
+                    <li><strong>Generar y descargar el vídeo.</strong> Lo presenta el avatar disponible para tu agencia.</li>
+                </ol>
+                <p class="p-tags"><span class="trial-tag">En pruebas</span></p>
             </div>
+            <figure class="p-poster">
+                <img src="/assets/hada.webp" width="640" height="888" alt="Hada, avatar generado con IA" loading="lazy" decoding="async">
+                <figcaption><span class="demo-ai-label">Avatar generado con IA</span></figcaption>
+            </figure>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta danger-cta">
+    <!-- Planes -->
+    <section class="p-section p-section-alt" id="planes">
         <div class="container">
-            <h2>¿Listo para transformar tu operativa inmobiliaria?</h2>
-            <p>InmoAssistant automatiza tu captación, atiende a tus clientes 24/7 y clasifica leads para que tu equipo se enfoque en lo que importa.</p>
-            <div class="cta-buttons">
-                <a href="mailto:javier@inmogat.com?subject=Solicitud%20de%20demo%20-%20Inmoassistant" class="btn btn-primary btn-large btn-pulse">Solicitar Demo</a>
+            <p class="p-eyebrow">Planes</p>
+            <h2 class="p-h2">Precios mensuales, IVA no incluido</h2>
+            <div class="p-plans">
+                <div class="p-plan">
+                    <h3>Atención</h3>
+                    <p class="p-price"><strong>99&nbsp;€</strong>/mes <span class="p-vat">IVA no incluido</span></p>
+                    <ul>
+                        <li>Bot de WhatsApp</li>
+                        <li>Videoguías</li>
+                        <li>Compradores con cartera <span class="trial-tag">En pruebas</span></li>
+                        <li>CRM y embudo</li>
+                    </ul>
+                    <p class="p-plan-demo"><a href="#planes-en-accion" class="p-link" data-plan-open="atencion">Ver en acción <i class="fas fa-play-circle" aria-hidden="true"></i></a></p>
+                </div>
+                <div class="p-plan p-plan-main">
+                    <h3>Atención + Vídeo</h3>
+                    <p class="p-price"><strong>149&nbsp;€</strong>/mes <span class="p-vat">IVA no incluido</span></p>
+                    <ul>
+                        <li>Todo lo de Atención</li>
+                        <li>Generar y descargar videovisitas con el avatar disponible para tu agencia <span class="trial-tag">En pruebas</span></li>
+                        <li class="p-plan-no">No incluye publicación directa</li>
+                    </ul>
+                    <p class="p-plan-demo"><a href="#planes-en-accion" class="p-link" data-plan-open="video">Ver en acción <i class="fas fa-play-circle" aria-hidden="true"></i></a></p>
+                </div>
+                <div class="p-plan">
+                    <h3>Completo</h3>
+                    <p class="p-price"><strong>199&nbsp;€</strong>/mes <span class="p-vat">IVA no incluido</span></p>
+                    <ul>
+                        <li>Todo lo de Atención + Vídeo</li>
+                        <li>Diagnóstico y plan operativo en redes, con avatares <span class="trial-tag">En pruebas</span></li>
+                        <li>Publicación directa, siempre con aprobación de la agencia</li>
+                    </ul>
+                    <p class="p-plan-demo"><a href="#planes-en-accion" class="p-link" data-plan-open="completo">Ver en acción <i class="fas fa-play-circle" aria-hidden="true"></i></a></p>
+                </div>
+            </div>
+            <p class="p-plans-foot">Precios por agencia y mes, IVA no incluido. Hoy el único piloto de InmoAssistant es nuestra propia agencia. <a href="/precios/" class="p-link">Ver planes <i class="fas fa-arrow-right" aria-hidden="true"></i></a></p>
+        </div>
+    </section>
+
+    <!-- Llamada final -->
+    <section class="p-cta">
+        <div class="container">
+            <h2 class="p-h2">Empieza por los contactos que ya te escriben</h2>
+            <div class="p-actions p-actions-center">
+                <a href="mailto:info@inmoassistant.es?subject=Solicitud%20de%20demo%20InmoAssistant" class="btn btn-primary btn-large" data-demo>Solicitar Demo</a>
                 <a href="tel:+34618986600" class="btn btn-secondary btn-large">Hablar con Ventas</a>
             </div>
-            <p class="final-urgency">Deja que la IA trabaje por ti mientras tu equipo cierra más ventas</p>
         </div>
     </section>
 
@@ -205,10 +224,15 @@
                      abre la seccion 1 de app.inmoassistant.es/privacidad. -->
                 <p>InmoAssistant es un producto de INMOGAT CONSULTING SLU, que actúa como responsable del tratamiento.</p>
                 <p>INMOGAT CONSULTING SLU &middot; Avda Pineda 44, 08860 Castelldefels (Barcelona), España &middot; CIF B63162879</p>
+                <p>Inscrita en el Registro Mercantil de Barcelona, Tomo 35.547, Folio 206, Hoja B-271646.</p>
+                <p>Contacto: <a href="mailto:info@inmoassistant.es">info@inmoassistant.es</a></p>
+                <p class="footer-meta">WhatsApp, Facebook e Instagram son marcas de Meta Platforms, Inc. InmoAssistant no está afiliado, patrocinado ni respaldado por Meta.</p>
             </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="/script.js"></script>
+    <script src="/demo.js"></script>
+    <script src="/plan-demos.js"></script>
 </body>
 </html>
