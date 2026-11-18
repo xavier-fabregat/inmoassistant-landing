@@ -365,8 +365,7 @@
     font-weight: 700;
 }
 
-.p-tags .pending-tag,
-.p-tags .trial-tag {
+.p-tags .pending-tag {
     margin: 0 0.4rem 0.4rem 0;
 }
 
@@ -499,8 +498,7 @@
     border-bottom: 1px solid var(--line);
 }
 
-.p-plan li .pending-tag,
-.p-plan li .trial-tag {
+.p-plan li .pending-tag {
     display: inline-block;
     margin-top: 0.3rem;
 }
@@ -698,9 +696,7 @@
 }
 
 .p-doc .pending-tag,
-.p-doc .trial-tag,
-.p-pricing-page .pending-tag,
-.p-pricing-page .trial-tag {
+.p-pricing-page .pending-tag {
     margin-left: 0.25rem;
 }
 
@@ -1305,8 +1301,7 @@
     font-size: 0.9rem;
 }
 
-.p-plan-more .pending-tag,
-.p-plan-more .trial-tag {
+.p-plan-more .pending-tag {
     display: inline-block;
     margin-top: 0.35rem;
 }
@@ -2200,8 +2195,7 @@
     margin: 12px 0 0;
 }
 
-.pd-tags .pending-tag,
-.pd-tags .trial-tag {
+.pd-tags .pending-tag {
     margin: 0 6px 6px 0;
 }
 

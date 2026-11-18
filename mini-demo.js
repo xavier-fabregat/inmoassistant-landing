@@ -106,7 +106,6 @@
                     <div class="mini-panel">
                         <p class="mini-panel-title">Seguimiento</p>
                         <p class="mini-text">Si un contacto deja de responder, el asistente vuelve a escribirle con un seguimiento programado.</p>
-                        <p><span class="trial-tag">En pruebas</span></p>
                         <p class="mini-text mini-muted">Solo dentro de la ventana de conversación que permite WhatsApp.</p>
                     </div></div>`;
             }

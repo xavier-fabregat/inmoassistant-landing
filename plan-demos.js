@@ -9,7 +9,6 @@
     const toggleBtn = root.querySelector('[data-action="toggle"]');
     const picks = Array.from(root.querySelectorAll('[data-plan]'));
     const srEl = root.querySelector('.pd-sr');
-    const tagsEl = root.querySelector('.pd-tags');
     const noticeEl = root.querySelector('.demo-notice');
     const NOTICE = 'Demostración con datos ficticios';
 
@@ -22,7 +21,6 @@
     const on = (el, cls, v) => { if (el.classList.contains(cls) !== v) el.classList.toggle(cls, v); };
     const set = (el, key, v) => { if (el[key] !== v) el[key] = v; };
     const typed = (text, from, to, t) => text.slice(0, Math.round(text.length * clamp01((t - from) / (to - from))));
-    const tag = text => `<span class="trial-tag">${esc(text)}</span>`;
     const hada = '<img src="/assets/hada.webp" width="640" height="888" alt="" decoding="async">';
 
     /* ---------- Reglas del embudo (las mismas que el asistente y la portada) ---------- */
@@ -73,8 +71,7 @@
         // Captación: la propietaria entra en el mismo chat y el mismo embudo.
         const videoguia = `
             <div class="hx-vthumb">${hada}<span class="hx-ai">Avatar generado con IA</span><span class="hx-play"><i class="fas fa-play"></i></span></div>
-            <p class="hx-rich-title"><i class="fas fa-video"></i> Videoguía del vendedor</p>
-            <p>${tag('En pruebas')}</p>`;
+            <p class="hx-rich-title"><i class="fas fa-video"></i> Videoguía del vendedor</p>`;
         const resumen = `
             <p class="hx-rich-title"><i class="fas fa-clipboard-check"></i> Resumen</p>
             <p>Piso en Villa Ejemplo · 3&nbsp;hab. · 90&nbsp;m² · Para entrar a vivir</p>
@@ -449,18 +446,15 @@
             build: atencion, loop: 32, steps: [['Consulta', 0, 'pd-chat'], ['Búsqueda en cartera', 2, 'pd-cartera'], ['Lista de inmuebles', 4.4, 'pd-chat'], ['Contacto en el embudo', 8.7, 'pd-funnel'], ['Captación', 15, 'pd-chat']],
             // En pantallas estrechas, Captación termina mostrando la tarjeta en el embudo.
             panelAt: t => t >= 28.8 ? 'pd-funnel' : null,
-            tags: ['Compradores con cartera: en pruebas', 'Videoguía: en pruebas'],
             sr: 'Un comprador pide un piso en Costa Ejemplo por WhatsApp. El asistente busca en la cartera de la agencia, filtra por venta y población, y le envía la lista de inmuebles. El cliente elige el EJ-102, deja su nombre e indica cuándo quiere visitarlo; su tarjeta pasa de «Cualificados», con 65 puntos, a «Oportunidad activa», con 85, caliente y la siguiente acción «Coordinar visita ref. EJ-102». Después, en captación de propietarios, una propietaria escribe que está interesada en vender un piso y el asistente le envía la videoguía del vendedor, con Hada, un avatar generado con IA. Responde población, nombre, habitaciones, metros y estado, recibe el resumen y el enlace al valorador, y su tarjeta llega a «Oportunidad activa», con 85, caliente y «Pasa a un asesor».'
         },
         video: {
             build: video, loop: 27, notice: 'Fotos de un inmueble real. Datos, precio y referencia ficticios', steps: [['Fotos', 0, 'pd-ficha'], ['Guion', 4.6, 'pd-script'], ['Revisión', 9.2, 'pd-script'], ['Generación', 11.9, 'pd-render'], ['Descarga', 16.8, 'pd-render'], ['Tu campaña', 19.2, 'pd-campaign']],
-            tags: ['En pruebas'],
             sr: 'En la ficha del inmueble aparecen seis fotos y se escribe un guion por escenas. En la revisión se cambia el texto de la cocina. Después se genera la videovisita, presentada por Hada, un avatar generado con IA, y se descarga. Con el vídeo descargado, la agencia lo usa en sus canales: un anuncio de ejemplo, la web de la agencia y un mensaje de WhatsApp para los contactos que lo han pedido. Tu inmueble, tu vídeo y tu campaña. Depende menos de los portales.'
         },
         completo: {
             build: completo, loop: 22,
             steps: [['Diagnóstico', 0, 'pd-diag'], ['Estrategia', 4.3, 'pd-strategy'], ['Plan de 4 semanas', 8.2, 'pd-plan'], ['Revisión', 12.8, 'pd-review'], ['Publicación', 17, 'pd-review']],
-            tags: ['En pruebas'],
             sr: 'Un análisis guiado de las redes de la agencia muestra seguidores, interacción y la mejor franja. Se define la estrategia por pilares y zonas, se llena un plan de 4 semanas con reels y carruseles con datos del municipio, la administradora aprueba una pieza y queda programada.'
         }
     };
@@ -503,7 +497,6 @@
         panelEls = new Map(p.steps.map(s => [s[2], stageEl.querySelector(`.${s[2]}`)]));
         srEl.textContent = p.sr;
         noticeEl.innerHTML = `<i class="fas fa-info-circle"></i> ${esc(p.notice || NOTICE)}`;
-        tagsEl.innerHTML = p.tags.map(tag).join(' ');
         t = reduce.matches ? stillOf(p) : 0;
         drawAll(null);
     }
