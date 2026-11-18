@@ -70,10 +70,13 @@
     color: var(--nav-ink);
     font-weight: 700;
     letter-spacing: -0.01em;
+    text-decoration: none;
 }
 
-.portada .logo i {
-    color: var(--accent);
+.portada .logo svg {
+    display: block;
+    height: 27px;
+    width: auto;
 }
 
 .portada .nav-links a {
@@ -540,6 +543,18 @@
     color: var(--foot-ink);
 }
 
+/* Logotipo del pie: ocupa el sitio del antiguo título h4 */
+.portada .footer-logo {
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+}
+
+.portada .footer-logo svg {
+    display: block;
+    height: 24px;
+    width: auto;
+}
+
 /* Móvil */
 
 @media (max-width: 900px) {
@@ -621,8 +636,8 @@
         font-size: 0.85rem;
     }
 
-    .portada .logo {
-        font-size: 1.15rem;
+    .portada .logo svg {
+        height: 22px;
     }
 }
 
@@ -1183,6 +1198,8 @@
     --line: #e3e5ea;
     --accent: #3b5bfd;
     --accent-ink: #ffffff;
+    /* Azul del logotipo, provisional: cambiarlo aquí y en assets/favicon.svg */
+    --logo-blue: #009fe3;
 
     --nav-bg: #0c0f14;
     --nav-ink: #f4f5f7;
