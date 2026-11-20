@@ -6,6 +6,106 @@
 // La autenticación es gestionada por https://app.inmoassistant.es
 // La landing redirige al login sin gestionar estado local
 
+// ===== CONTACTO Y CONTRATACIÓN: CONFIGURACIÓN =====
+// ALTA_URL: alta online de la app. Cada botón «Contratar» la abre con
+//   ?plan=atencion | atencion-video | completo.
+//   Vacía: el botón abre un correo a CONTACTO_EMAIL con el asunto
+//   «Contratar plan <nombre>».
+// CONTACTO_ENDPOINT: URL que recibe el formulario de /contacto por POST (JSON).
+//   Vacía: el formulario abre un correo a CONTACTO_EMAIL con los campos
+//   escritos en el cuerpo.
+// CONDICIONES_URL: condiciones de contratación.
+//   Vacía: no se muestra el enlace.
+const ALTA_URL = '';
+const CONTACTO_ENDPOINT = '';
+const CONDICIONES_URL = '';
+const CONTACTO_EMAIL = 'info@inmoassistant.es';
+
+function mailtoHref(subject, body) {
+    let href = 'mailto:' + CONTACTO_EMAIL + '?subject=' + encodeURIComponent(subject);
+    if (body) href += '&body=' + encodeURIComponent(body);
+    return href;
+}
+
+// Botones «Contratar» de /contacto
+document.querySelectorAll('a.c-hire[data-plan]').forEach(btn => {
+    if (ALTA_URL) {
+        const url = new URL(ALTA_URL);
+        url.searchParams.set('plan', btn.dataset.plan);
+        btn.href = url.toString();
+    } else {
+        btn.href = mailtoHref('Contratar plan ' + btn.dataset.planNombre);
+    }
+});
+
+// Enlace a las condiciones de contratación
+if (CONDICIONES_URL) {
+    document.querySelectorAll('[data-condiciones]').forEach(p => {
+        const link = p.querySelector('[data-condiciones-link]');
+        if (link) link.href = CONDICIONES_URL;
+        p.hidden = false;
+    });
+}
+
+// Formulario de contacto. La validación es la nativa del navegador:
+// el evento submit solo llega cuando todos los campos son válidos.
+const contactForm = document.getElementById('contacto-form');
+if (contactForm) {
+    const statusEl = contactForm.querySelector('.c-status');
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+
+    const setStatus = (state, html) => {
+        statusEl.dataset.state = state;
+        statusEl.innerHTML = html;
+    };
+
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const data = Object.fromEntries(new FormData(contactForm));
+
+        // Campo trampa relleno: no se envía nada ni se muestra ningún estado
+        if (data.web) return;
+        delete data.web;
+
+        if (!CONTACTO_ENDPOINT) {
+            const body = [
+                'Nombre: ' + data.nombre,
+                'Agencia: ' + data.agencia,
+                'Correo: ' + data.correo,
+                'Teléfono: ' + (data.telefono || '—'),
+                'Plan que interesa: ' + data.plan,
+                '',
+                'Mensaje:',
+                data.mensaje
+            ].join('\n');
+            window.location.href = mailtoHref('Consulta desde la web: ' + data.agencia, body);
+            setStatus('mail', 'Tu programa de correo debería abrirse con el mensaje ya escrito. No nos llega hasta que lo envíes desde allí. Si no se abre, escríbenos a <a href="mailto:' + CONTACTO_EMAIL + '">' + CONTACTO_EMAIL + '</a>.');
+            return;
+        }
+
+        submitBtn.disabled = true;
+        setStatus('sending', 'Enviando…');
+        const controller = new AbortController();
+        const timer = setTimeout(() => controller.abort(), 15000);
+        try {
+            const res = await fetch(CONTACTO_ENDPOINT, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data),
+                signal: controller.signal
+            });
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            contactForm.reset();
+            setStatus('sent', 'Mensaje enviado. Te responderemos por correo.');
+        } catch (err) {
+            setStatus('error', 'No se ha podido enviar el mensaje. Inténtalo de nuevo o escríbenos a <a href="mailto:' + CONTACTO_EMAIL + '">' + CONTACTO_EMAIL + '</a>.');
+        } finally {
+            clearTimeout(timer);
+            submitBtn.disabled = false;
+        }
+    });
+}
+
 // Smooth scroll para los links de navegación
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -99,20 +199,6 @@ ctaButtons.forEach(btn => {
         this.style.letterSpacing = '0';
     });
 });
-
-// Validación y manejo básico de formularios (si se agregan)
-function initForm() {
-    const form = document.querySelector('form');
-    if (form) {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            console.log('Formulario enviado');
-            // Aquí iría la lógica de envío del formulario
-        });
-    }
-}
-
-initForm();
 
 // Efecto parallax para secciones con fondo
 window.addEventListener('scroll', () => {

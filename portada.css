@@ -103,6 +103,32 @@
 
 /* Botones */
 
+.portada .btn {
+    border-radius: 999px;
+    font-weight: 600;
+    letter-spacing: 0;
+}
+
+.portada .btn-primary {
+    background: var(--btn-bg);
+    color: var(--btn-ink);
+    box-shadow: none;
+}
+
+.portada .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px var(--btn-shadow);
+}
+
+.portada .btn:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+}
+
+.p-actions {
+    margin-top: 2rem;
+}
+
 .p-link {
     color: var(--accent);
     font-weight: 600;
@@ -1139,6 +1165,10 @@
     --screen-line: #2a303b;
     --screen-shadow: 0 40px 80px -30px rgba(59, 91, 253, 0.45);
 
+    --btn-bg: #c6f432;
+    --btn-ink: #0c0f14;
+    --btn-shadow: rgba(198, 244, 50, 0.35);
+
     --foot-bg: #0c0f14;
     --foot-ink: #a3aab8;
 
@@ -1365,9 +1395,12 @@
     margin-bottom: 0;
 }
 
-/* Sin botón debajo: el texto de entrada cierra a ras del titular */
 .p-hero-stage .p-lead {
     margin-bottom: 0;
+}
+
+.p-hero-stage .p-actions {
+    margin-top: 1.5rem;
 }
 
 @media (max-width: 900px) {
@@ -3167,5 +3200,201 @@
     .pd-steps li {
         flex: 1 1 30%;
         font-size: 0.72rem;
+    }
+}
+
+
+/* ===== Contacto y contratación (/contacto) ===== */
+
+.c-h2 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.8rem;
+    letter-spacing: -0.015em;
+    margin: 0 0 1.5rem;
+}
+
+.c-steps {
+    list-style: none;
+    counter-reset: c-step;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+    padding: 0;
+    margin: 0 0 2.5rem;
+}
+
+.c-steps li {
+    counter-increment: c-step;
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    padding: 1rem 0;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 1.05rem;
+}
+
+.c-steps li::before {
+    content: counter(c-step);
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.4rem;
+    color: var(--accent);
+}
+
+.c-steps strong {
+    color: var(--ink);
+}
+
+.p-pricing-page .pricing-tier h3 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.c-hire {
+    margin-top: 1.25rem;
+    width: 100%;
+}
+
+.c-note {
+    margin-top: 1.5rem;
+    color: var(--muted);
+}
+
+.c-contact {
+    max-width: 820px;
+}
+
+.c-intro {
+    color: var(--muted);
+    font-size: 1.05rem;
+    margin-bottom: 2rem;
+}
+
+.c-form {
+    display: grid;
+    gap: 1.25rem;
+}
+
+.c-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+}
+
+.c-field {
+    display: grid;
+    gap: 0.4rem;
+}
+
+.c-field label {
+    font-weight: 600;
+    color: var(--ink);
+}
+
+.c-optional {
+    font-weight: 400;
+    color: var(--muted);
+}
+
+.c-field input,
+.c-field select,
+.c-field textarea {
+    width: 100%;
+    font: inherit;
+    color: var(--ink);
+    background: var(--card-bg);
+    border: 1px solid #c9ccd4;
+    border-radius: 12px;
+    padding: 0.75rem 1rem;
+}
+
+.c-field textarea {
+    resize: vertical;
+    min-height: 9rem;
+}
+
+.c-field input:focus-visible,
+.c-field select:focus-visible,
+.c-field textarea:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 1px;
+    border-color: var(--accent);
+}
+
+.c-field input:user-invalid,
+.c-field textarea:user-invalid {
+    border-color: #c62828;
+}
+
+/* Campo trampa: fuera de la vista y del orden de tabulación */
+.c-trap {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.c-submit {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+}
+
+.c-submit .btn[disabled] {
+    opacity: 0.6;
+    cursor: wait;
+    transform: none;
+}
+
+.c-status {
+    margin: 0;
+    font-weight: 600;
+    color: var(--ink);
+}
+
+.c-status[data-state="error"] {
+    color: #c62828;
+}
+
+.c-status a {
+    color: inherit;
+}
+
+.c-privacy {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin: 0;
+}
+
+.c-privacy a {
+    color: inherit;
+    text-decoration: underline;
+}
+
+.footer-contact {
+    margin-top: 1rem;
+}
+
+@media (max-width: 900px) {
+    .c-steps {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .c-row {
+        grid-template-columns: 1fr;
+    }
+
+    .p-actions .btn,
+    .c-submit .btn {
+        width: 100%;
     }
 }
