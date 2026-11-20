@@ -442,6 +442,8 @@
     border: 1px solid var(--line);
     border-radius: 20px;
     padding: 2rem;
+    display: flex;
+    flex-direction: column;
 }
 
 .p-plan-main {
@@ -477,6 +479,7 @@
 .p-plan ul {
     list-style: none;
     border-top: 1px solid var(--line);
+    flex: 1;
 }
 
 .p-plan li {
@@ -3398,3 +3401,24 @@
         width: 100%;
     }
 }
+
+/* Botón «Contratar» en cada tarjeta: al pie, a la misma altura en las tres */
+.p-plan .c-hire,
+.p-pricing-page .pricing-tier .c-hire {
+    margin-top: 1.25rem;
+}
+
+.p-plan .c-hire + .p-plan-demo,
+.pricing-tier .c-hire + .p-plan-demo {
+    margin-top: 1rem;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+/* «IVA no incluido: se añade en el pago…» bajo las tarjetas */
+.p-pay-note {
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+    color: var(--muted);
+}
+

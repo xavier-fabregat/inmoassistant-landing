@@ -7,16 +7,19 @@
 // La landing redirige al login sin gestionar estado local
 
 // ===== CONTACTO Y CONTRATACIÓN: CONFIGURACIÓN =====
-// ALTA_URL: alta online de la app. Cada botón «Contratar» la abre con
-//   ?plan=atencion | atencion-video | completo.
+// PAGO_URLS: página de pago del proveedor para cada plan. Cada botón
+//   «Contratar» (.c-hire) abre la URL de su data-plan. Solo enlaces: sin
+//   formularios de tarjeta, scripts de terceros ni cookies en la web.
 //   Vacía: el botón abre un correo a CONTACTO_EMAIL con el asunto
 //   «Contratar plan <nombre>».
+//   Con las tres rellenas, la nota bajo las tarjetas empieza por
+//   «Pago mensual con tarjeta.».
 // CONTACTO_ENDPOINT: URL que recibe el formulario de /contacto por POST (JSON).
 //   Vacía: el formulario abre un correo a CONTACTO_EMAIL con los campos
 //   escritos en el cuerpo.
 // CONDICIONES_URL: condiciones de contratación.
 //   Vacía: no se muestra el enlace.
-const ALTA_URL = '';
+const PAGO_URLS = { 'atencion': '', 'atencion-video': '', 'completo': '' };
 const CONTACTO_ENDPOINT = '';
 const CONDICIONES_URL = '';
 const CONTACTO_EMAIL = 'info@inmoassistant.es';
@@ -27,16 +30,16 @@ function mailtoHref(subject, body) {
     return href;
 }
 
-// Botones «Contratar» de /contacto
+// Botones «Contratar» de cada plan (portada, /precios y /contacto)
 document.querySelectorAll('a.c-hire[data-plan]').forEach(btn => {
-    if (ALTA_URL) {
-        const url = new URL(ALTA_URL);
-        url.searchParams.set('plan', btn.dataset.plan);
-        btn.href = url.toString();
-    } else {
-        btn.href = mailtoHref('Contratar plan ' + btn.dataset.planNombre);
-    }
+    const pago = PAGO_URLS[btn.dataset.plan];
+    btn.href = pago ? pago : mailtoHref('Contratar plan ' + btn.dataset.planNombre);
 });
+
+// La tarjeta solo se menciona cuando los tres planes tienen página de pago
+if (Object.values(PAGO_URLS).every(Boolean)) {
+    document.querySelectorAll('[data-pago-tarjeta]').forEach(el => { el.hidden = false; });
+}
 
 // Enlace a las condiciones de contratación
 if (CONDICIONES_URL) {
